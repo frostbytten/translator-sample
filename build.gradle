@@ -1,0 +1,25 @@
+subprojects {
+  repositories {
+    jcenter()
+      mavenLocal()
+  }
+
+  apply plugin: 'java'
+    group 'org.agmip.translators'
+    version '2.0.0'
+    dependencies {
+      implementation 'org.agmip.bom:agmip-bom:2.1.1'
+    }
+}
+
+project(':api') {
+  dependencies {
+    compile 'org.agmip.ace:ace-core'
+  }
+}
+
+project(':standalone') {
+  dependencies {
+    implementation project(':api')
+  }
+}

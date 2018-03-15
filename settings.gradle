@@ -1,0 +1,3 @@
+rootProject.name = 'translator-sample'
+enableFeaturePreview('IMPROVED_POM_SUPPORT')
+include 'api', 'standalone'
