@@ -9,17 +9,27 @@ subprojects {
     version '2.0.0'
     dependencies {
       implementation 'org.agmip.bom:agmip-bom:2.1.1'
+      implementation 'ch.qos.logback:logback-classic'
     }
 }
 
 project(':api') {
+  apply plugin: 'java-library'
   dependencies {
     compile 'org.agmip.ace:ace-core'
   }
 }
 
 project(':standalone') {
+  apply plugin: 'application'
   dependencies {
     implementation project(':api')
+    compile 'info.picocli:picocli:2.3.0'
+  }
+  mainClassName = 'SampleTranslatorApp'
+
+  run {
+    if (System.getProperty("exec.args"))
+      args System.getProperty("exec.args").split(",")
   }
 }
